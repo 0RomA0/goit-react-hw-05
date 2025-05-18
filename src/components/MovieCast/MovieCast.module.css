@@ -1,0 +1,41 @@
+.castList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 0;
+    list-style: none;
+}
+
+.castCard {
+    width: 120px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+.castImage {
+    width: 100%;
+    height: 160px;
+    object-fit: contain;
+    border-radius: 8px;
+    background-color: #f0f0f0;
+}
+
+
+.castText {
+    font-size: 14px;
+    font-weight: bold;
+    margin: 6px 0 2px;
+    color: #222;
+}
+
+.castCharacterText {
+    font-size: 14px;
+    color: #734040;
+    margin: 0;
+}
+
+.castCharacter {
+    font-size: 13px;
+    color: #555;
+    margin: 0;
+}

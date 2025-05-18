@@ -1,0 +1,43 @@
+.reviewsContainer {
+    max-width: 800px;
+    padding: 2rem;
+}
+
+.reviewsTitle {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: #222;
+}
+
+.reviewItem {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.reviewAuthor {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #444;
+    margin-bottom: 0.5rem;
+}
+
+.reviewContentTitle {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.3rem;
+}
+
+.reviewContent {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.6;
+    white-space: pre-line;
+}
+

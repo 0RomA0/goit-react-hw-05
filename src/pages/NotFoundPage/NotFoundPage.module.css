@@ -1,0 +1,25 @@
+.div {
+    margin-top: 50px;
+    text-align: center;
+   
+}
+
+.title {
+    color: #871d1d;
+
+}
+
+.text {
+    color: #871d1d;
+    font-weight: 600;
+    
+}
+
+.link {
+    color: #6c83f6;
+    
+}
+
+.link:hover {
+    color: blue;
+}
