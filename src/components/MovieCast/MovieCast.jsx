@@ -38,7 +38,7 @@ export default function MovieCast() {
     MoviesDataCast();
     }, [movieId])
     
-console.log(movieCast);
+
     return (
 
         <div>

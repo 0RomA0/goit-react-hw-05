@@ -40,7 +40,7 @@ export default function Homepage({ }) {
         <>
 
             <h1> Trending today </h1>
-            <MovieList MovieList={ trendingMovies } />
+            <MovieList movies={ trendingMovies } />
             
             <HashLoader
                 color={"#861e1a"}

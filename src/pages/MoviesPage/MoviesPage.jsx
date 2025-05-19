@@ -9,17 +9,49 @@ import style from "./MoviesPage.module.css"
 
 import MovieList from "../../components/MovieList/MovieList";
 import {FetchMovie} from "../../movie-api";
+import { useSearchParams } from "react-router-dom";
 
 export default function MoviesPage() {
 
     const [movies, setMovies] = useState([]);
+    const [queryInput, setQueryInput] = useState(query);
+    
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
-    const inputRef = useRef();
-    
+    const [searchParams, setSearchParams] = useSearchParams();
+    const query = searchParams.get("query") ?? "";
     
 
+
+    const changeSearchQuery = (queryInput) => {
+        const nextSearchParams = new URLSearchParams(searchParams);
+        
+        if (queryInput !== "") {
+            nextSearchParams.set("query", queryInput)
+        } else {
+            nextSearchParams.delete("query");
+        }
+
+        setSearchParams(nextSearchParams)
+    }
+
+    const handleInputChange = (event) => {
+        const text = event.target.value;
+        setQueryInput(text);
+
+    // Якщо інпут порожній, очищаємо query
+    if (text.trim() === "") {
+        changeSearchQuery("");
+    }
+};
+
+    useEffect(() => {
         async function MoviesData(query) {
+            if (!query) {
+                setMovies([]);
+                setError(false);
+            return;
+        }
         
             try {
                 setError(false);
@@ -28,37 +60,39 @@ export default function MoviesPage() {
                 
                 if (!response || response.length === 0) {
                     setError(true);
+                    setMovies([]);
                     return;
                 }
 
             setMovies(response);
         
       } catch (error) {
-                setError(error);
+                setError(true);
             } finally {
                 setLoading(false);
                 
              }
             
         }
+        MoviesData(query)
+    },[query])
+
+        
  
 
     
     const handleSubmit = (event) => {
         event.preventDefault();
-        const textInput = inputRef.current.value;
-        // console.log(textInput);
         
 
-        if (textInput.trim() ===  "") {
+        if (queryInput.trim() ===  "") {
             toast.error('Field required, enter text!');
             return;
         } 
         
     
-        MoviesData(textInput);
-  
-         
+        changeSearchQuery(queryInput);
+      
     }
 
     return (
@@ -66,7 +100,8 @@ export default function MoviesPage() {
     <form className={style.form} onSubmit={handleSubmit}>
              
         <input className={style.input}
-            ref={inputRef}
+            value={queryInput} 
+            onChange={handleInputChange} 
             type="text"
             autoComplete="off"
             autoFocus
@@ -77,7 +112,7 @@ export default function MoviesPage() {
             <Toaster
                 position="top-right" />
             
-            <MovieList MovieList={movies} />
+            <MovieList movies={movies} />
             
             <HashLoader
                 color={"#861e1a"}

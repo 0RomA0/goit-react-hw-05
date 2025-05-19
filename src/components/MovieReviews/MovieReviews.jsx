@@ -39,7 +39,7 @@ export default function MovieReviews() {
     MoviesDataReviews();
     }, [movieId])
     
-console.log(movieReviews);
+
     return (
 
         <div className={style.reviewsContainer}>
